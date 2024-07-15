@@ -40,7 +40,7 @@ dates = [
 dates = [datetime.strptime(date, "%Y-%m-%d") for date in dates]
 
 # Plotting the timeline
-plt.figure(figsize=(15, 4))
+plt.figure(figsize=(15, 6))
 
 # Remove y-axis by setting all y values to the same point (e.g., y=0)
 y_position = 0
@@ -55,6 +55,7 @@ for i, (event, date) in enumerate(zip(events, dates)):
 
 # Remove y-ticks and y-labels
 plt.yticks([])
+plt.ylim(-1, 1)  # Adjust vertical limits to make room for text
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
 plt.grid(True, axis='x')  # Only show grid on x-axis
