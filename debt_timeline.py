@@ -40,14 +40,18 @@ dates = [
 dates = [datetime.strptime(date, "%Y-%m-%d") for date in dates]
 
 # Plotting the timeline
-plt.figure(figsize=(15, 2))
+plt.figure(figsize=(15, 4))
 
 # Remove y-axis by setting all y values to the same point (e.g., y=0)
 y_position = 0
 
 for i, (event, date) in enumerate(zip(events, dates)):
     plt.plot(date, y_position, "o", markersize=10)
-    plt.text(date, y_position + 0.1, f"{event}", va='bottom', ha='center', fontsize=10)
+    # Alternate the position of the text above and below the line to prevent overlap
+    if i % 2 == 0:
+        plt.text(date, y_position + 0.3, f"{event}", va='bottom', ha='center', fontsize=9, rotation=45)
+    else:
+        plt.text(date, y_position - 0.3, f"{event}", va='top', ha='center', fontsize=9, rotation=45)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
