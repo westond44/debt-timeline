@@ -48,8 +48,8 @@ y_position = 0
 for i, (event, date) in enumerate(zip(events, dates)):
     plt.plot(date, y_position, "o", markersize=10, color='b')
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
-    # Simplified text placement for testing
-    plt.text(date, y_position + 0.2 if i % 2 == 0 else y_position - 0.2, f"Event {i+1}", va='bottom', ha='right', fontsize=8, rotation=30)
+    # Add full text annotations
+    plt.text(date, y_position + 0.2 if i % 2 == 0 else y_position - 0.2, event, va='bottom', ha='right', fontsize=8, rotation=30)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
