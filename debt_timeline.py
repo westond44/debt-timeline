@@ -46,7 +46,8 @@ plt.figure(figsize=(15, 8))
 y_position = 0
 
 for i, (event, date) in enumerate(zip(events, dates)):
-    plt.plot(date, y_position, "o", markersize=10)
+    plt.plot(date, y_position, "o", markersize=10, color='b')
+    plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Alternate the position of the text above and below the line to prevent overlap
     if i % 2 == 0:
         plt.text(date, y_position + 0.4, f"{event}", va='bottom', ha='center', fontsize=8, rotation=45)
