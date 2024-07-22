@@ -85,9 +85,11 @@ for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     if i % 2 == 0:
         y_pos = upper_y_positions.pop(0)
         plt.text(date, y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
+        plt.plot([date, date], [y_position, y_pos], color='gray', linestyle='--')
     else:
         y_pos = lower_y_positions.pop(0)
         plt.text(date, y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
+        plt.plot([date, date], [y_position, y_pos], color='gray', linestyle='--')
 
 # Remove y-ticks and y-labels
 plt.yticks([])
