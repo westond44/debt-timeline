@@ -50,9 +50,9 @@ for i, (event, date) in enumerate(zip(events, dates)):
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Alternate the position of the text above and below the line to prevent overlap
     if i % 2 == 0:
-        plt.text(date, y_position + 0.4, f"{event}", va='bottom', ha='center', fontsize=8, rotation=45)
+        plt.text(date, y_position + 0.2, f"{event}", va='bottom', ha='right', fontsize=8, rotation=30, wrap=True)
     else:
-        plt.text(date, y_position - 0.4, f"{event}", va='top', ha='center', fontsize=8, rotation=45)
+        plt.text(date, y_position - 0.2, f"{event}", va='top', ha='left', fontsize=8, rotation=30, wrap=True)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
