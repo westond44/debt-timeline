@@ -39,27 +39,46 @@ dates = [
 # Convert date strings to datetime objects
 dates = [datetime.strptime(date, "%Y-%m-%d") for date in dates]
 
+# Define colors for different periods
+colors = [
+    "red",   # Pre-1930s
+    "orange",   # 1940s-1950s
+    "yellow",   # 1960s-1970s
+    "green",   # 1980s
+    "blue",   # 1990s
+    "purple",  # 2000s
+    "brown",  # 2010s
+    "pink"  # 2020s
+]
+
+# Map events to colors based on the period they belong to
+event_colors = [
+    colors[0], colors[1], colors[1], colors[2], colors[2],
+    colors[3], colors[4], colors[4], colors[5], colors[5],
+    colors[6], colors[6], colors[7], colors[7]
+]
+
 # Plotting the timeline
 plt.figure(figsize=(15, 8))
 
 # Remove y-axis by setting all y values to the same point (e.g., y=0)
 y_position = 0
 
-for i, (event, date) in enumerate(zip(events, dates)):
-    plt.plot(date, y_position, "o", markersize=10, color='b')
+for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
+    plt.plot(date, y_position, "o", markersize=10, color=color)
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Adjust text placement and rotation
     if i % 2 == 0:
-        plt.text(date, y_position + 0.4, event, va='bottom', ha='center', fontsize=11, rotation=15)
+        plt.text(date, y_position + 0.4, event, va='bottom', ha='center', fontsize=10, rotation=15, color=color)
     else:
-        plt.text(date, y_position - 0.4, event, va='top', ha='center', fontsize=11, rotation=15)
+        plt.text(date, y_position - 0.4, event, va='top', ha='center', fontsize=10, rotation=15, color=color)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
 plt.ylim(-2, 2)  # Further adjust vertical limits to make room for text
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
-plt.grid(True, axis='both')  # Add grid lines on both axes
+plt.grid(True, axis='x')  # Only show grid lines on x-axis
 plt.tight_layout()
 
 # Show the plot
