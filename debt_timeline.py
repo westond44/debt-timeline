@@ -48,12 +48,15 @@ y_position = 0
 for i, (event, date) in enumerate(zip(events, dates)):
     plt.plot(date, y_position, "o", markersize=10, color='b')
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
-    # Add full text annotations
-    plt.text(date, y_position + 0.2 if i % 2 == 0 else y_position - 0.2, event, va='bottom', ha='right', fontsize=8, rotation=30)
+    # Adjust text placement and rotation
+    if i % 2 == 0:
+        plt.text(date, y_position + 0.3, event, va='bottom', ha='center', fontsize=8, rotation=20)
+    else:
+        plt.text(date, y_position - 0.3, event, va='top', ha='center', fontsize=8, rotation=20)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
-plt.ylim(-1.5, 1.5)  # Adjust vertical limits to make room for text
+plt.ylim(-2, 2)  # Adjust vertical limits to make room for text
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
 plt.grid(True, axis='x')  # Only show grid on x-axis
