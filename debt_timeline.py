@@ -67,16 +67,27 @@ y_position = 0
 # Adjust vertical spacing increment
 spacing_increment = 1.2
 
+# Create two lists for vertical positions to avoid overlap
+upper_y_positions = []
+lower_y_positions = []
+
+for i in range(len(events)):
+    if i % 2 == 0:
+        upper_y_positions.append(spacing_increment * (len(upper_y_positions) + 1))
+    else:
+        lower_y_positions.append(-spacing_increment * (len(lower_y_positions) + 1))
+
+# Plot each event
 for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     plt.plot(date, y_position, "o", markersize=10, color=color)
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
-    # Adjust text placement and rotation
+    # Assign upper or lower y position
     if i % 2 == 0:
-        new_y_pos = y_position + spacing_increment * ((i // 2) + 1)
-        plt.text(date, new_y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
+        y_pos = upper_y_positions.pop(0)
+        plt.text(date, y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
     else:
-        new_y_pos = y_position - spacing_increment * ((i // 2) + 1)
-        plt.text(date, new_y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
+        y_pos = lower_y_positions.pop(0)
+        plt.text(date, y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
 
 # Remove y-ticks and y-labels
 plt.yticks([])
