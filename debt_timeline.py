@@ -45,14 +45,9 @@ plt.figure(figsize=(15, 8))
 # Remove y-axis by setting all y values to the same point (e.g., y=0)
 y_position = 0
 
-for i, (event, date) in enumerate(zip(events, dates)):
+for i, date in enumerate(dates):
     plt.plot(date, y_position, "o", markersize=10, color='b')
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
-    # Alternate the position of the text above and below the line to prevent overlap
-    if i % 2 == 0:
-        plt.text(date, y_position + 0.2, f"{event}", va='bottom', ha='right', fontsize=8, rotation=30, wrap=True)
-    else:
-        plt.text(date, y_position - 0.2, f"{event}", va='top', ha='left', fontsize=8, rotation=30, wrap=True)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
