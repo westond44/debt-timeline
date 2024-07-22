@@ -50,9 +50,9 @@ for i, (event, date) in enumerate(zip(events, dates)):
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Adjust text placement and rotation
     if i % 2 == 0:
-        plt.text(date, y_position + 0.3, event, va='bottom', ha='center', fontsize=8, rotation=20)
+        plt.text(date, y_position + 0.35, event, va='bottom', ha='center', fontsize=10, rotation=15)
     else:
-        plt.text(date, y_position - 0.3, event, va='top', ha='center', fontsize=8, rotation=20)
+        plt.text(date, y_position - 0.35, event, va='top', ha='center', fontsize=10, rotation=15)
 
 # Remove y-ticks and y-labels
 plt.yticks([])
