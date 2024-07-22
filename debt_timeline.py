@@ -64,25 +64,23 @@ plt.figure(figsize=(15, 8))
 # Remove y-axis by setting all y values to the same point (e.g., y=0)
 y_position = 0
 
-# Track previous y positions to ensure spacing
-prev_y_pos = 0
+# Adjust vertical spacing increment
+spacing_increment = 1.2
 
 for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     plt.plot(date, y_position, "o", markersize=10, color=color)
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Adjust text placement and rotation
     if i % 2 == 0:
-        new_y_pos = prev_y_pos + 0.8  # Increase vertical spacing
+        new_y_pos = y_position + spacing_increment * ((i // 2) + 1)
         plt.text(date, new_y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
-        prev_y_pos = new_y_pos
     else:
-        new_y_pos = prev_y_pos - 0.8  # Increase vertical spacing
+        new_y_pos = y_position - spacing_increment * ((i // 2) + 1)
         plt.text(date, new_y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
-        prev_y_pos = new_y_pos
 
 # Remove y-ticks and y-labels
 plt.yticks([])
-plt.ylim(-3, 3)  # Further adjust vertical limits to make room for text
+plt.ylim(-10, 10)  # Further adjust vertical limits to make room for text
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
 plt.grid(True, axis='x')  # Only show grid lines on x-axis
