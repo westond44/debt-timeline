@@ -67,11 +67,11 @@ y_position = 0
 for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     plt.plot(date, y_position, "o", markersize=10, color=color)
     plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
-    # Adjust text placement and rotation
+    # Use consistent color for text
     if i % 2 == 0:
-        plt.text(date, y_position + 0.4, event, va='bottom', ha='center', fontsize=10, rotation=15, color=color)
+        plt.text(date, y_position + 0.4, event, va='bottom', ha='center', fontsize=10, rotation=15, color='black')
     else:
-        plt.text(date, y_position - 0.4, event, va='top', ha='center', fontsize=10, rotation=15, color=color)
+        plt.text(date, y_position - 0.4, event, va='top', ha='center', fontsize=10, rotation=15, color='black')
 
 # Remove y-ticks and y-labels
 plt.yticks([])
