@@ -65,7 +65,7 @@ plt.figure(figsize=(15, 8))
 y_position = 0
 
 # Adjust vertical spacing increment
-spacing_increment = 1.2
+spacing_increment = 1.5
 
 # Create two lists for vertical positions to avoid overlap
 upper_y_positions = []
@@ -80,7 +80,6 @@ for i in range(len(events)):
 # Plot each event
 for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     plt.plot(date, y_position, "o", markersize=10, color=color)
-    plt.vlines(date, ymin=-1, ymax=y_position, color='gray', linestyle='--')
     # Assign upper or lower y position
     if i % 2 == 0:
         y_pos = upper_y_positions.pop(0)
@@ -93,10 +92,19 @@ for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
 
 # Remove y-ticks and y-labels
 plt.yticks([])
-plt.ylim(-10, 10)  # Further adjust vertical limits to make room for text
+plt.ylim(-15, 15)  # Further adjust vertical limits to make room for text
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
 plt.grid(True, axis='x')  # Only show grid lines on x-axis
+
+# Format x-axis to show years only
+plt.gca().xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%Y'))
+
+# Add a legend
+periods = ["Pre-1930s", "1940s-1950s", "1960s-1970s", "1980s", "1990s", "2000s", "2010s", "2020s"]
+handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, markersize=10) for color in colors]
+plt.legend(handles, periods, loc='upper left', title="Periods")
+
 plt.tight_layout()
 
 # Show the plot
