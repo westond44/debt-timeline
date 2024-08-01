@@ -3,20 +3,20 @@ from datetime import datetime
 
 # Data preparation
 events = [
-    "Limited consumer credit;\nprimary focus of debt included\nmortgages and business loans.",
-    "Expansion\nof consumer credit",
-    "Introduction of\nDiners Club card",
-    "Growth in consumer debt\nwith bank-issued credit cards.",
-    "Federal Government starts\nguaranteeing student loans.",
-    "Deregulation of\nfinancial markets",
-    "Boom in the\ncredit market",
-    "Massive increase in\nconsumer debt",
-    "\nMajor recession",
-    "CARD Act of 2009",
-    "\nHigh levels of student loan debt",
-    "Record levels\nof consumer debt",
-    "\nSharp increase in unsecured debt",
-    "\nUnsecured debt levels continue to rise"
+    "Limited consumer credit",
+    "Consumer credit expands",
+    "Diners Club card intro",
+    "Growth in credit cards",
+    "Govt guarantees student loans",
+    "Financial deregulation",
+    "Credit market boom",
+    "Consumer debt surge",
+    "Major recession",
+    "CARD Act 2009",
+    "High student loan debt",
+    "Record consumer debt",
+    "Rise in unsecured debt",
+    "Unsecured debt increase"
 ]
 
 dates = [
@@ -84,11 +84,9 @@ for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     if i % 2 == 0:
         y_pos = upper_y_positions.pop(0)
         plt.text(date, y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
-        plt.plot([date, date], [y_position, y_pos], color='gray', linestyle='--')
     else:
         y_pos = lower_y_positions.pop(0)
         plt.text(date, y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
-        plt.plot([date, date], [y_position, y_pos], color='gray', linestyle='--')
 
 # Remove y-ticks and y-labels
 plt.yticks([])
@@ -104,6 +102,10 @@ plt.gca().xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%Y'))
 periods = ["Pre-1930s", "1940s-1950s", "1960s-1970s", "1980s", "1990s", "2000s", "2010s", "2020s"]
 handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, markersize=10) for color in colors]
 plt.legend(handles, periods, loc='upper left', title="Periods")
+
+# Remove plot borders
+for spine in plt.gca().spines.values():
+    spine.set_visible(False)
 
 plt.tight_layout()
 
