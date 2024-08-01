@@ -3,20 +3,20 @@ from datetime import datetime
 
 # Data preparation
 events = [
-    "Pre-1930s: Limited consumer credit;\nprimary focus of debt included\nmortgages and business loans.",
-    "Post-WWII (1940s-1950s): Expansion\nof consumer credit",
-    "1950: Introduction of\nDiners Club card",
-    "1960s-1970s: Growth in consumer debt\nwith bank-issued credit cards.",
-    "1965: Federal Government starts\nguaranteeing student loans.",
-    "1980s: Deregulation of\nfinancial markets",
-    "1990s: Boom in the\ncredit market",
-    "2000-2007: Massive increase in\nconsumer debt",
-    "2008 Financial Crisis:\nMajor recession",
-    "2009: CARD Act of 2009",
-    "Post-Recession Recovery:\nHigh levels of student loan debt",
-    "Late 2010s: Record levels\nof consumer debt",
-    "Pandemic impact:\nSharp increase in unsecured debt",
-    "Post-Pandemic Era:\nUnsecured debt levels continue to rise"
+    "Limited consumer credit;\nprimary focus of debt included\nmortgages and business loans.",
+    "Expansion\nof consumer credit",
+    "Introduction of\nDiners Club card",
+    "Growth in consumer debt\nwith bank-issued credit cards.",
+    "Federal Government starts\nguaranteeing student loans.",
+    "Deregulation of\nfinancial markets",
+    "Boom in the\ncredit market",
+    "Massive increase in\nconsumer debt",
+    "\nMajor recession",
+    "CARD Act of 2009",
+    "\nHigh levels of student loan debt",
+    "Record levels\nof consumer debt",
+    "\nSharp increase in unsecured debt",
+    "\nUnsecured debt levels continue to rise"
 ]
 
 dates = [
