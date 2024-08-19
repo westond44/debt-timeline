@@ -61,36 +61,24 @@ event_colors = [
 # Plotting the timeline
 plt.figure(figsize=(15, 8))
 
-# Remove y-axis by setting all y values to the same point (e.g., y=0)
+# Set all y values to the same point (y=0)
 y_position = 0
 
-# Adjust vertical spacing increment
-spacing_increment = 1.5
+# Adjust vertical spacing increment for clearer event distribution
+spacing_increment = 2.5
 
-# Create two lists for vertical positions to avoid overlap
-upper_y_positions = []
-lower_y_positions = []
-
-for i in range(len(events)):
-    if i % 2 == 0:
-        upper_y_positions.append(spacing_increment * (len(upper_y_positions) + 1))
-    else:
-        lower_y_positions.append(-spacing_increment * (len(lower_y_positions) + 1))
+# Use a pattern to assign positions above and below the timeline consistently
+y_positions = [-spacing_increment, spacing_increment] * (len(events) // 2 + 1)
 
 # Plot each event
 for i, (event, date, color) in enumerate(zip(events, dates, event_colors)):
     plt.plot(date, y_position, "o", markersize=10, color=color)
-    # Assign upper or lower y position
-    if i % 2 == 0:
-        y_pos = upper_y_positions.pop(0)
-        plt.text(date, y_pos, event, va='bottom', ha='center', fontsize=10, rotation=10, color='black')
-    else:
-        y_pos = lower_y_positions.pop(0)
-        plt.text(date, y_pos, event, va='top', ha='center', fontsize=10, rotation=10, color='black')
+    plt.text(date, y_positions[i], event, va='bottom' if y_positions[i] > 0 else 'top', 
+             ha='center', fontsize=10, rotation=45, color='black')
 
 # Remove y-ticks and y-labels
 plt.yticks([])
-plt.ylim(-15, 15)  # Further adjust vertical limits to make room for text
+plt.ylim(-spacing_increment * 3, spacing_increment * 3)  # Adjust vertical limits
 plt.xlabel('Date')
 plt.title('Timeline of Unsecured Debt')
 plt.grid(True, axis='x')  # Only show grid lines on x-axis
